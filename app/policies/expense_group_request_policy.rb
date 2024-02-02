@@ -1,5 +1,6 @@
 class ExpenseGroupRequestPolicy < ApplicationPolicy
+	
 	def update_expense_group?
-		user.admin?
+		user.admin_status?
 	end
 end 

@@ -4,19 +4,24 @@ class EmployeesController < ApplicationController
 
 	def index
 		@employee = Employee.all
-		render json: @employee
+		render json: @employee	#not able to achieve filtering for this
 	end
 
 	def create
 		employee = Employee.new(employee_params(params))
         Rails.logger.info "#{employee_params(params)}"
-		if employee.save!
-			render json: employee
+		email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+		email_to_check = employee.email
+		if email_to_check =~ email_regex
+			if employee.valid?
+				employee.save!
+				render json: required_attributes(employee)
+			else
+				render json: { details: employee.errors.full_messages }
+			end
 		else
-			render json: "error"
+			render json: "Email pattern is incorrect!"
 		end
-	rescue StandardError => e
-		Rails.logger.info e.message
 	end
 
 	def delete_emp
@@ -41,7 +46,7 @@ class EmployeesController < ApplicationController
 	end
 	
 	def show
-		@employee = Employee.find_by(id: params[:id])
+		@employee = Employee.find_by(id: params[:employee_id])
 		render :show
 	end
 
@@ -56,15 +61,7 @@ class EmployeesController < ApplicationController
 	def terminate
 		employee = Employee.find_by(id: params[:employee_id])
 		employee.update(employee_status: "terminated")
-		render json: employee
-	end
-
-	def search_employee
-		user = Employee.find_by(id: params[:user_id])
-		Current.current_user = user
-		authorize user, policy_class: EmployeesPolicy	
-		@employee = Employee.find_by(id: params[:employee_id])
-		render :search_employee
+		render json: required_attributes(employee)
 	end
 
 	private

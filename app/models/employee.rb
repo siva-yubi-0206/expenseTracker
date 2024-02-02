@@ -3,8 +3,9 @@ class Employee < ApplicationRecord
   
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
-    validates :employee_status, presence: true
-  
+    attribute :employee_status, :string, default: "active"
     attribute :admin_status, :boolean, default: false
+
+
   end
   

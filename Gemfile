@@ -68,3 +68,7 @@ end
 
 gem "pundit", "~> 2.3"
 
+gem 'aasm'
+
+gem 'faraday'
+

@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :employees
   put "delete_emp", to: "employees#delete_emp"
   get "show_employee", to: "employees#show_employee"
-  get "search_employee", to: "employees#search_employee"
   put "terminate", to: "employees#terminate"
 
   resources :expense_group_requests
@@ -26,9 +25,14 @@ Rails.application.routes.draw do
   put "delete_expenses", to: "expense_requests#delete_expenses"
   put "update_expense_status", to: "expense_requests#update_expense_status"
 
-  resources :comment
-  post "create_comment", to: "comment#create_comment"
-  post "reply_comment", to: "comment#reply_comment"
-  delete "delete_comment", to: "comment#delete_comment" 
+  resources :comments
+  post "create_comment", to: "comments#create_comment"
+  put "delete_comment", to: "comments#delete_comment" 
+  put "edit_comment", to: "comments#edit_comment"
+
+  resources :replies
+  post "reply_comment", to: "replies#reply_comment"
+  put "edit_reply", to: "replies#edit_reply"
+  put "delete_reply", to: "replies#delete_reply"
       
 end

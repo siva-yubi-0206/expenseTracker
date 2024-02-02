@@ -1,5 +1,5 @@
 class CommentPolicy < ApplicationPolicy
 	def create_comment?
-		user.admin?
+		user.admin_status?
 	end
 end

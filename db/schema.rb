@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_02_092615) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_07_083743) do
   create_table "comments", force: :cascade do |t|
-    t.integer "comment_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,6 +36,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_02_092615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "employee_id", null: false
+    t.string "status"
     t.index ["employee_id"], name: "index_expense_group_requests_on_employee_id"
   end
 
@@ -54,7 +54,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_02_092615) do
     t.index ["expense_group_request_id"], name: "index_expense_requests_on_expense_group_request_id"
   end
 
+  create_table "replies", force: :cascade do |t|
+    t.text "replies"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "comment_id", null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+  end
+
   add_foreign_key "comments", "expense_requests"
   add_foreign_key "expense_group_requests", "employees"
   add_foreign_key "expense_requests", "expense_group_requests"
+  add_foreign_key "replies", "comments"
 end
