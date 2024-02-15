@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    include Pundit
+    include Pundit::Authorization
 
     rescue_from ActiveRecord::RecordInvalid, with: :handle_unprocessable_entity
     rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found

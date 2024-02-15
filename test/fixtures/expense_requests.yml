@@ -1,21 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  employee_id: 1
-  expense_group_id: 1
-  invoice_number: 1
+exp_one:
+  invoice_number: 10
   date: 2024-01-23 15:42:46
-  description: MyText
-  amount: 1
-  attachment: MyString
-  status: MyString
+  description: expense1
+  amount: 100
+  status:
+  expense_group_request_id: 1
 
-two:
-  employee_id: 1
-  expense_group_id: 1
-  invoice_number: 1
+exp_two:
+  invoice_number: 12
   date: 2024-01-23 15:42:46
-  description: MyText
-  amount: 1
-  attachment: MyString
-  status: MyString
+  description: expense2
+  amount: 1000
+  status:
+  expense_group_request_id: 2

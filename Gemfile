@@ -72,3 +72,8 @@ gem 'aasm'
 
 gem 'faraday'
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+gem 'factory_bot_rails'

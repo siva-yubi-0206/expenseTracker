@@ -1,13 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+employees_one:
+  name: John Doe
+  email: john.doe@example.com
+  dept: IT
+  employee_status: active
+  admin_status: true
 
-one:
-  name: MyString
-  email: MyString
-  dept: MyString
-  employee_status: MyString
-
-two:
-  name: MyString
-  email: MyString
-  dept: MyString
-  employee_status: MyString
+employees_two:
+  name: Jane Smith
+  email: jane.smith@example.com
+  dept: HR
+  employee_status: terminated
+  admin_status: false
