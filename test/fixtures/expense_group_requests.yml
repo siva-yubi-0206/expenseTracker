@@ -1,11 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  applied_amount: 1
-  approved_amount: 1
+exp_grp_one:
+  title: ExpReport_1
+  applied_amount: 10000
+  approved_amount: 0
+  status:
+  employee_id: 1
 
-two:
-  title: MyString
-  applied_amount: 1
-  approved_amount: 1
+exp_grp_two:
+  title: ExpReport_2
+  applied_amount: 10000
+  approved_amount: 0
+  status:
+  employee_id: 2

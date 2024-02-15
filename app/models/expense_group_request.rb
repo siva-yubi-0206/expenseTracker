@@ -4,4 +4,3 @@ class ExpenseGroupRequest < ApplicationRecord
 	validates :applied_amount, presence: true
 	validates :title, presence: true, uniqueness: true
 end
-  

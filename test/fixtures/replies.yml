@@ -1,7 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  replies: MyText
+replies_one:
+  replies: reply1
+  comment_id: 1
 
-two:
-  replies: MyText
+replies_two:
+  replies: reply2
+  comment_id: 2

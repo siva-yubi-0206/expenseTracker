@@ -9,19 +9,20 @@ class EmployeesController < ApplicationController
 
 	def create
 		employee = Employee.new(employee_params(params))
-        Rails.logger.info "#{employee_params(params)}"
-		email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-		email_to_check = employee.email
-		if email_to_check =~ email_regex
-			if employee.valid?
-				employee.save!
+        #Rails.logger.info "#{employee_params(params)}"
+		#email_regex = \A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z
+		#email_to_check = employee.email
+		#if email_to_check =~ email_regex
+
+		if employee.valid?
 				render json: required_attributes(employee)
-			else
-				render json: { details: employee.errors.full_messages }
-			end
 		else
-			render json: "Email pattern is incorrect!"
+				render json: { details: employee.errors.full_messages }
 		end
+
+		#else
+		#	render json: { error: "Email pattern is incorrect!" }, status: :unprocessable_entity
+		#end
 	end
 
 	def delete_emp
